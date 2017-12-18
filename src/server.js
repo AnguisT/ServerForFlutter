@@ -27,7 +27,7 @@ router.get('/user/:login', function (req, res) {
 });
 
 router.post('/user', function(req, res) {
-    var user = req.body;
+    var user = req.body.login;
     res.json(user);
     // db.newuser(book).then((data) => {
     //     res.json(data);
