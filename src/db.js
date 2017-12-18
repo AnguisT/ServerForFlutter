@@ -10,18 +10,78 @@ const connect = {
 
 var db = pg(connect);
 
-function getUser(login) {
-    return db.any("select * from public.user where login='" + login + "'")
+function getAllUsers() {
+    return db.any("select * from public.user")
     .then((val) => {
         return val;
     });
 }
 
+function getUserByLogin(login) {
+    return db.any(`select * from public.user where login like '${login}'`)
+    .then((val) => {
+        return val;
+    });
+}
+
+function getCaloriesByIdStatistics(idstatistics) {
+    return db.any(`select * from public.calories where idstatistics=${idstatistics}`);
+}
+
+function getAllCustomExercise(iduser) {
+    return db.any(`select * from public.customexercise where iduser=${iduser}`);
+}
+
+function getExerciseByName(name) {
+    return db.any(`select * from public.exercise where exercisename ILIKE '%${name}%'`);
+}
+
+function getStatisticsByDate(datetime) {
+    return db.any(`select * from public.statistics where datetime='${datetime}'`);
+}
+
+function getStatisticsByCustomDate(datefrom, dateto) {
+    return db.any(`select * from public.statistics where datetime between '${datefrom}' and '${dateto}'`);
+}
+
 function newUser(user) {
-    return db.any("INSERT INTO public.user(login, password, caloriesnorm, resetcalories, idtypeexercise) VALUES ('" + user.login + "', '" + user.password + "', " + user.caloriesnorm + ", " + user.resetcalories + ", " + user.idtypeexercise + ")");
+    return db.any(`INSERT INTO public.user(login, password, caloriesnorm, resetcalories, idtypeexercise) VALUES ('${user.login}', '${user.password}', ${user.caloriesnorm}, ${user.resetcalories}, ${user.idtypeexercise})`)
+    .then((val) => {
+        return val;
+    });
+}
+
+function addStatistics(statistics) {
+    return db.any(`INSERT INTO public.statistics(datetime, iduser) VALUES ('${statistics.datetime}', ${statistics.iduser})`)
+    .then((val) => {
+        return val;
+    });
+}
+
+function addCalories(calories) {
+    return db.any(`INSERT INTO public.calories(caloriescount, idstatistics) VALUES (${calories.caloriescount}, ${calories.idstatistics})`)
+    .then((val) => {
+        return val;
+    });
+}
+
+function addCustomExercise(customexercise) {
+    return db.any(`INSERT INTO public.customexercise(customexercisename, customexerciseminutes, customexercisecalories) VALUES ('${customexercise.customexercisename}', ${customexercise.customexerciseminutes}, ${customexercise.customexercisecalories})`)
+    .then((val) => {
+        return val;
+    });
 }
 
 module.exports = {
-    getuser: getUser,
+    getallusers: getAllUsers,
+    getuserbylogin: getUserByLogin,
+    getcaloriesbyidstatistics: getCaloriesByIdStatistics,
+    getallcustomexercise: getAllCustomExercise,
+    getexercisebyname: getExerciseByName,
+    getstatisticsbydate: getStatisticsByDate,
+    getstatisticsbycustomdate: getStatisticsByCustomDate,
     newuser: newUser,
+    addcalories: addCalories,
+    addstatistics: addStatistics,
+    addcustomexercise: addCustomExercise,
 };

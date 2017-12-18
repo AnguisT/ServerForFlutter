@@ -14,24 +14,71 @@ app.use(function (req, res, next) {
 
 app.use(express.static(__dirname + '/'));
 app.use(bodyParser.json());
-app.use('/api', router);
 
-app.listen(process.env.PORT || 3000, function () {
-    console.log('Server started!')
-});
-
-router.get('/user/:login', function (req, res) {
-    db.getuser(req.params.login).then((val) => {
+app.get('/user/:login', function(req, res) {
+    db.getallusers(req.params.login).then((val) => {
         res.json(val);
     });
 });
 
-router.post('/user', function(req, res) {
-    var user = req.body.login;
-    res.json(user);
-    // db.newuser(book).then((data) => {
-    //     res.json(data);
-    // });
+app.get('/calories/:idstatistics', function(req, res) {
+    db.getcaloriesbyidstatistics(req.params.idstatistics).then((val) => {
+        res.json(val);
+    });
 });
 
-app.use('/api', router);
+app.get('/customexercise/:iduser', function(req, res) {
+    db.getallcustomexercise(req.params.iduser).then((val) => {
+        res.json(val);
+    });
+});
+
+app.get('/exercise/:name', function(req, res) {
+    db.getexercisebyname(req.params.name).then((val) => {
+        res.json(val);
+    });
+});
+
+app.get('/statistics/:date', function(req, res) {
+    db.getstatisticsbydate(req.params.date).then((val) => {
+        res.json(val);
+    });
+});
+
+app.get('/customstatistics/:datefrom/:dateto', function(req, res) {
+    db.getstatisticsbycustomdate(req.params.datefrom, req.params.dateto).then((val) => {
+        res.json(val);
+    });
+});
+
+app.post('/user', function(req, res) {
+    var user = req.body;
+    db.newuser(user).then((data) => {
+        res.json(data);
+    });
+});
+
+app.post('/statistics', function(req, res) {
+    var statistics = req.body;
+    db.addstatistics(statistics).then((data) => {
+        res.json(data);
+    })
+});
+
+app.post('/calories', function(req, res) {
+    var calories = req.body;
+    db.addcalories(calories).then((data) => {
+        res.json(data);
+    })
+});
+
+app.post('/customexercise', function(req, res) {
+    var customexercise = req.body;
+    db.addcustomexercise(customexercise).then((data) => {
+        res.json(data);
+    })
+});
+
+module.exports = {
+    app: app,
+};
