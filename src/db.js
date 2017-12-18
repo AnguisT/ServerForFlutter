@@ -17,6 +17,11 @@ function getUser(login) {
     });
 }
 
+function newUser(user) {
+    return db.any("INSERT INTO public.user(login, password, caloriesnorm, resetcalories, idtypeexercise) VALUES ('" + user.login + "', '" + user.password + "', " + user.caloriesnorm + ", " + user.resetcalories + ", " + user.idtypeexercise + ")");
+}
+
 module.exports = {
     getuser: getUser,
+    newuser: newUser,
 };

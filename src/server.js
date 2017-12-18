@@ -18,18 +18,20 @@ app.use('/api', router);
 
 app.listen(process.env.PORT || 3000, function () {
     console.log('Server started!')
-    main();
-})
+});
 
 router.get('/user/:login', function (req, res) {
     db.getuser(req.params.login).then((val) => {
         res.json(val);
     });
 });
-app.use('/api', router);
 
-function main() {
-    db.getuser('Vlad').then((val) => {
-        console.log(val);
-    });
-}
+router.post('/user', function(req, res) {
+    var user = req.body;
+    res.json(user);
+    // db.newuser(book).then((data) => {
+    //     res.json(data);
+    // });
+});
+
+app.use('/api', router);
