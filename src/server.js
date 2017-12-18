@@ -23,17 +23,16 @@ app.listen(process.env.PORT || 3000, function () {
 
 router.get('/user/:login', function (req, res) {
     console.log('hello');
-    res.json({first: 'first'});
-    // db.getuser(req.params.login).then((val) => {
-    //     return res.json(val);
-    //     console.log('i am' + val);
-    // });
+    console.log(res.json({first: 'first'}));
+    console.log(res);
+    db.getuser("Vlad").then((val) => {
+        console.log('i am' + val);
+    });
 });
 app.use('/api', router);
 
 function main() {
     db.getuser('Vlad').then((val) => {
-        return val;
-        // console.log(val);
+        console.log(val);
     });
 }
