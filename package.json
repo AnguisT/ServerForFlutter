@@ -4,13 +4,17 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/server.js"
+    "start": "node ./src/server.js",
+    "test": "node ./src/tests.js"
   },
   "author": "vlad",
   "license": "ISC",
   "dependencies": {
+    "assert": "^1.4.1",
+    "body-parser": "^1.18.2",
     "express": "^4.15.2",
+    "http": "0.0.0",
+    "mocha": "^4.0.1",
     "pg": "^7.4.0",
     "pg-promise": "^7.3.2"
   }
