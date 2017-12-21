@@ -51,7 +51,7 @@ app.get('/statistics/:date', function(req, res) {
     });
 });
 
-app.get('/customstatistics/:datefrom/:dateto', function(req, res) {
+app.get('/statistics/:datefrom/:dateto', function(req, res) {
     db.getstatisticsbycustomdate(req.params.datefrom, req.params.dateto).then((val) => {
         res.json(val);
     });
