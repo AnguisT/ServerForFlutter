@@ -33,6 +33,12 @@ app.get('/customexercise/:iduser', function(req, res) {
     });
 });
 
+app.get('/exercise', function(req, res) {
+    db.getallexercise().then((val) => {
+        res.json(val);
+    });
+});
+
 app.get('/exercise/:name', function(req, res) {
     db.getexercisebyname(req.params.name).then((val) => {
         res.json(val);

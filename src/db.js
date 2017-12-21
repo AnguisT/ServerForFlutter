@@ -32,6 +32,10 @@ function getAllCustomExercise(iduser) {
     return db.any(`select * from public.customexercise where iduser=${iduser}`);
 }
 
+function getAllExercise() {
+    return db.any('select * from public.exercise');    
+}
+
 function getExerciseByName(name) {
     return db.any(`select * from public.exercise where exercisename ILIKE '%${name}%'`);
 }
@@ -77,6 +81,7 @@ module.exports = {
     getuserbylogin: getUserByLogin,
     getcaloriesbyidstatistics: getCaloriesByIdStatistics,
     getallcustomexercise: getAllCustomExercise,
+    getallexercise: getAllExercise,
     getexercisebyname: getExerciseByName,
     getstatisticsbydate: getStatisticsByDate,
     getstatisticsbycustomdate: getStatisticsByCustomDate,
