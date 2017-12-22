@@ -18,7 +18,7 @@ function getAllUsers() {
 }
 
 function getUserByLogin(login) {
-    return db.any(`select * from public.user where login ilike '${login}'`)
+    return db.any(`select * from public.user where login='${login}'`)
     .then((val) => {
         return val;
     });
