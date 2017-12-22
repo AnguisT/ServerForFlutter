@@ -17,8 +17,15 @@ describe('/', function () {
     });
     
     test('should get user', () => {
-        return supertest(app.app).get('/user/Vlad').then((response) => {
-            // console.log(response.body);
+        return supertest(app.app).get('/user/vlad').then((response) => {
+            console.log(response.body);
+            expect(response.body).toBeTruthy();
+        });
+    });
+
+    test('should get user', () => {
+        return supertest(app.app).get('/user').then((response) => {
+            console.log(response.body);
             expect(response.body).toBeTruthy();
         });
     });
@@ -39,14 +46,14 @@ describe('/', function () {
 
     test('should get all exercise', () => {
         return supertest(app.app).get('/exercise').then((response) => {
-            console.log(response.body);
+            // console.log(response.body);
             expect(response.body).toBeTruthy();
         });
     });
 
     test('should get exercise', () => {
         return supertest(app.app).get('/exercise/run').then((response) => {
-            console.log(response.body);
+            // console.log(response.body);
             expect(response.body).toBeTruthy();
         });
     });

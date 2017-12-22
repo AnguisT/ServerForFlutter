@@ -18,7 +18,14 @@ function getAllUsers() {
 }
 
 function getUserByLogin(login) {
-    return db.any(`select * from public.user where login like '${login}'`)
+    return db.any(`select * from public.user where login ilike '${login}'`)
+    .then((val) => {
+        return val;
+    });
+}
+
+function getAllTypeExercise() {
+    return db.any('select * from public.typeexercise')
     .then((val) => {
         return val;
     });
@@ -85,6 +92,7 @@ module.exports = {
     getexercisebyname: getExerciseByName,
     getstatisticsbydate: getStatisticsByDate,
     getstatisticsbycustomdate: getStatisticsByCustomDate,
+    getalltypeexercise: getAllTypeExercise,
     newuser: newUser,
     addcalories: addCalories,
     addstatistics: addStatistics,

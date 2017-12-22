@@ -16,7 +16,19 @@ app.use(express.static(__dirname + '/'));
 app.use(bodyParser.json());
 
 app.get('/user/:login', function(req, res) {
-    db.getallusers(req.params.login).then((val) => {
+    db.getuserbylogin(req.params.login).then((val) => {
+        res.json(val);
+    });
+});
+
+app.get('/user', function(req, res) {
+    db.getallusers().then((val) => {
+        res.json(val);
+    });
+});
+
+app.get('/typeexercise', function(req, res) {
+    db.getalltypeexercise().then((val) => {
         res.json(val);
     });
 });
