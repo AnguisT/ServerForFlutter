@@ -85,11 +85,13 @@ function addCustomExercise(customexercise) {
                         customexercisename,
                         customexerciseminutes,
                         customexercisecalories,
+                        iduser
                         timedayid
                     ) VALUES (
                         '${customexercise.customexercisename}',
                         ${customexercise.customexerciseminutes},
                         ${customexercise.customexercisecalories},
+                        ${customexercise.iduser},
                         ${customexercise.timedayid}
                     )`)
     .then((val) => {
