@@ -85,7 +85,7 @@ function addCustomExercise(customexercise) {
                         customexercisename,
                         customexerciseminutes,
                         customexercisecalories,
-                        iduser
+                        iduser,
                         timedayid
                     ) VALUES (
                         '${customexercise.customexercisename}',
