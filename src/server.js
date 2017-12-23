@@ -77,11 +77,9 @@ app.get('/newuser/:login/:password/:caloriesnorm/:resetcalories/:idtypeexercise'
         resetcalories: req.params.resetcalories,
         idtypeexercise: req.params.idtypeexercise,
     };
-    res.json(user);
-    // console.log(user);
-    // db.newuser(user).then((data) => {
-        // res.json(data);
-    // });
+    db.newuser(user).then((data) => {
+        res.json(data);
+    });
 });
 
 app.post('/statistics', function(req, res) {
