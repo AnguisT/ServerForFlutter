@@ -81,7 +81,17 @@ function addCalories(calories) {
 }
 
 function addCustomExercise(customexercise) {
-    return db.any(`INSERT INTO public.customexercise(customexercisename, customexerciseminutes, customexercisecalories, timedayid) VALUES ('${customexercise.customexercisename}', ${customexercise.customexerciseminutes}, ${customexercise.customexercisecalories}, ${customexercise.timedayid})`)
+    return db.any(`INSERT INTO public.customexercise(
+                        customexercisename,
+                        customexerciseminutes,
+                        customexercisecalories,
+                        timedayid
+                    ) VALUES (
+                        '${customexercise.customexercisename}',
+                        ${customexercise.customexerciseminutes},
+                        ${customexercise.customexercisecalories},
+                        ${customexercise.timedayid}
+                    )`)
     .then((val) => {
         return val;
     });

@@ -82,4 +82,11 @@ describe('/', function () {
         });
     });
 
+    test('should post statistics', () => {
+        return supertest(app.app).get('/customexercise/Walking/50/600/3/3').then((response) => {
+            console.log(response.body);
+            expect(response.body).toBeTruthy();
+        });
+    });
+
 });
