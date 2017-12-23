@@ -77,10 +77,11 @@ app.post('/user', function(req, res) {
         resetcalories: req.body.resetcalories,
         idtypeexercise: req.body.idtypeexercise,
     };
-    console.log(user);
-    db.newuser(user).then((data) => {
-        res.json(data);
-    });
+    res.json(user);
+    // console.log(user);
+    // db.newuser(user).then((data) => {
+        // res.json(data);
+    // });
 });
 
 app.post('/statistics', function(req, res) {

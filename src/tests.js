@@ -7,11 +7,11 @@ describe('/', function () {
     
     test('should post user', () => {
         var body = {
-            login: 'Vladislav',
-            password: 'vladislav',
-            caloriesnorm: 1000,
-            resetcalories: 2000,
-            idtypeexercise: 2
+            "login": "Vladislav",
+            "password": 'vladislav',
+            "caloriesnorm": "1000",
+            "resetcalories": 2000,
+            "idtypeexercise": 2
         };
         return supertest(app.app).post('/user').send(body).then((response) => {
             console.log(response.body);
