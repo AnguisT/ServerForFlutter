@@ -56,8 +56,10 @@ function getStatisticsByCustomDate(datefrom, dateto) {
 }
 
 function newUser(user) {
+    console.log(user.idtypeexercise);
     return db.any(`INSERT INTO public.user(login, password, caloriesnorm, resetcalories, idtypeexercise) VALUES ('${user.login}', '${user.password}', ${user.caloriesnorm}, ${user.resetcalories}, ${user.idtypeexercise})`)
     .then((val) => {
+        console.log(val);
         return val;
     });
 }

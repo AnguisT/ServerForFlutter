@@ -71,6 +71,7 @@ app.get('/statistics/:datefrom/:dateto', function(req, res) {
 
 app.post('/user', function(req, res) {
     var user = req.body;
+    console.log(user);
     db.newuser(user).then((data) => {
         res.json(data);
     });
