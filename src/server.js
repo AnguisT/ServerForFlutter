@@ -102,9 +102,21 @@ app.post('/calories', function(req, res) {
     })
 });
 
-app.post('/customexercise', function(req, res) {
-    var customexercise = req.body;
+app.get('/customexercise/:name/:minutes/:calories/:timedayid', function(req, res) {
+    var customexercise = {
+        customexercisename: req.params.name,
+        customexerciseminutes: req.params.minutes,
+        customexercisecalories: req.params.calories,
+        timedayid: req.params.timedayid,
+    };
     db.addcustomexercise(customexercise).then((data) => {
+        res.json(data);
+    })
+});
+
+app.get('/timeday/:name', function(req, res) {
+    var name = req.params.name;
+    db.addcustomexercise(name).then((data) => {
         res.json(data);
     })
 });

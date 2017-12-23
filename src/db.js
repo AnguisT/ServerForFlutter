@@ -81,7 +81,14 @@ function addCalories(calories) {
 }
 
 function addCustomExercise(customexercise) {
-    return db.any(`INSERT INTO public.customexercise(customexercisename, customexerciseminutes, customexercisecalories) VALUES ('${customexercise.customexercisename}', ${customexercise.customexerciseminutes}, ${customexercise.customexercisecalories})`)
+    return db.any(`INSERT INTO public.customexercise(customexercisename, customexerciseminutes, customexercisecalories, timedayid) VALUES ('${customexercise.customexercisename}', ${customexercise.customexerciseminutes}, ${customexercise.customexercisecalories}, ${customexercise.timedayid})`)
+    .then((val) => {
+        return val;
+    });
+}
+
+function addTimeDay(timeday) {
+    return db.any(`INSERT INTO public.timeday(timeday) VALUES ('${timeday}')`)
     .then((val) => {
         return val;
     });
@@ -102,4 +109,5 @@ module.exports = {
     addcalories: addCalories,
     addstatistics: addStatistics,
     addcustomexercise: addCustomExercise,
+    addtimeday: addTimeDay,
 };
