@@ -39,6 +39,10 @@ function getAllCustomExercise(iduser) {
     return db.any(`select * from public.customexercise where iduser=${iduser}`);
 }
 
+function getAllTimeDay() {
+    return db.any('select * from public.timeday');
+}
+
 function getAllExercise() {
     return db.any('select * from public.exercise');    
 }
@@ -93,6 +97,7 @@ module.exports = {
     getstatisticsbydate: getStatisticsByDate,
     getstatisticsbycustomdate: getStatisticsByCustomDate,
     getalltypeexercise: getAllTypeExercise,
+    getalltimeday: getAllTimeDay,
     newuser: newUser,
     addcalories: addCalories,
     addstatistics: addStatistics,

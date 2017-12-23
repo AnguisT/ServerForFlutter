@@ -45,6 +45,12 @@ app.get('/customexercise/:iduser', function(req, res) {
     });
 });
 
+app.get('/timeday', function(req, res) {
+    db.getalltimeday().then((val) => {
+        res.json(val);
+    });
+});
+
 app.get('/exercise', function(req, res) {
     db.getallexercise().then((val) => {
         res.json(val);

@@ -6,29 +6,29 @@ var app = require('./server');
 describe('/', function () {
     
     test('should post user', () => {
-        var body = {
-            "login": "Vladislav",
-            "password": 'vladislav',
-            "caloriesnorm": "1000",
-            "resetcalories": 2000,
-            "idtypeexercise": 2
-        };
-        return supertest(app.app).post('/user').send(body).then((response) => {
-            console.log(response.body);
-            expect(response.body).toBeTruthy();
-        });
+        // var body = {
+        //     "login": "Vladislav",
+        //     "password": 'vladislav',
+        //     "caloriesnorm": "1000",
+        //     "resetcalories": 2000,
+        //     "idtypeexercise": 2
+        // };
+        // return supertest(app.app).post('/user').send(body).then((response) => {
+        //     console.log(response.body);
+        //     expect(response.body).toBeTruthy();
+        // });
     });
     
     test('should get user', () => {
         return supertest(app.app).get('/user/vlad').then((response) => {
-            console.log(response.body);
+            // console.log(response.body);
             expect(response.body).toBeTruthy();
         });
     });
 
     test('should get user', () => {
         return supertest(app.app).get('/user').then((response) => {
-            console.log(response.body);
+            // console.log(response.body);
             expect(response.body).toBeTruthy();
         });
     });
@@ -42,7 +42,7 @@ describe('/', function () {
 
     test('should get customexercise', () => {
         return supertest(app.app).get('/customexercise/3').then((response) => {
-            // console.log(response.body);
+            console.log(response.body);
             expect(response.body).toBeTruthy();
         });
     });
@@ -57,6 +57,13 @@ describe('/', function () {
     test('should get exercise', () => {
         return supertest(app.app).get('/exercise/run').then((response) => {
             // console.log(response.body);
+            expect(response.body).toBeTruthy();
+        });
+    });
+
+    test('should get timeday', () => {
+        return supertest(app.app).get('/timeday').then((response) => {
+            console.log(response.body);
             expect(response.body).toBeTruthy();
         });
     });
