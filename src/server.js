@@ -69,15 +69,15 @@ app.get('/statistics/:datefrom/:dateto', function(req, res) {
     });
 });
 
-app.post('/user', function(req, res) {
+app.get('/newuser/:login/:password/:caloriesnorm/:resetcalories/:idtypeexercise', function(req, res) {
     var user = {
-        login: req.body.login,
-        password: req.body.password,
-        caloriesnorm: req.body.caloriesnorm,
-        resetcalories: req.body.resetcalories,
-        idtypeexercise: req.body.idtypeexercise,
+        login: req.params.login,
+        password: req.params.password,
+        caloriesnorm: req.params.caloriesnorm,
+        resetcalories: req.params.resetcalories,
+        idtypeexercise: req.params.idtypeexercise,
     };
-    res.json(req.body);
+    res.json(user);
     // console.log(user);
     // db.newuser(user).then((data) => {
         // res.json(data);
