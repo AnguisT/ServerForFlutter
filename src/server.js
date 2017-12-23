@@ -70,7 +70,13 @@ app.get('/statistics/:datefrom/:dateto', function(req, res) {
 });
 
 app.post('/user', function(req, res) {
-    var user = req.body;
+    var user = {
+        login: req.body.login,
+        password: req.body.password,
+        caloriesnorm: req.body.caloriesnorm,
+        resetcalories: req.body.resetcalories,
+        idtypeexercise: req.body.idtypeexercise,
+    };
     console.log(user);
     db.newuser(user).then((data) => {
         res.json(data);
