@@ -77,7 +77,7 @@ app.post('/user', function(req, res) {
         resetcalories: req.body.resetcalories,
         idtypeexercise: req.body.idtypeexercise,
     };
-    res.json(user);
+    res.json(req.body);
     // console.log(user);
     // db.newuser(user).then((data) => {
         // res.json(data);
