@@ -118,7 +118,7 @@ app.get('/customexercise/:name/:minutes/:calories/:iduser/:timedayid', function(
 
 app.get('/timeday/:name', function(req, res) {
     var name = req.params.name;
-    db.addcustomexercise(name).then((data) => {
+    db.addtimeday(name).then((data) => {
         res.json(data);
     })
 });
