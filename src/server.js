@@ -88,15 +88,21 @@ app.get('/newuser/:login/:password/:caloriesnorm/:resetcalories/:idtypeexercise'
     });
 });
 
-app.post('/statistics', function(req, res) {
-    var statistics = req.body;
+app.get('/newstatistics/:datetime/:iduser', function(req, res) {
+    var statistics = {
+        datetime: req.params.datetime,
+        iduser: req.params.iduser,
+    }
     db.addstatistics(statistics).then((data) => {
         res.json(data);
     })
 });
 
-app.post('/calories', function(req, res) {
-    var calories = req.body;
+app.get('/newcalories/:caloriescount/:idstatistics', function(req, res) {
+    var calories = {
+        caloriescount: req.params.caloriescount,
+        idstatistics: req.params.idstatistics,
+    }
     db.addcalories(calories).then((data) => {
         res.json(data);
     })
