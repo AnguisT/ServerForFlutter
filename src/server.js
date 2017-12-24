@@ -138,7 +138,7 @@ app.get('/usercaloriesnorm/:caloriesnorm/:userid', function(req, res) {
         caloriesnorm: req.params.caloriesnorm,
         userid: req.params.userid,
     };
-    db.updateidtypeexerciseuser(user).then((data) => {
+    db.updatecaloriesnormuser(user).then((data) => {
         res.json(data);
     })
 });
@@ -148,7 +148,7 @@ app.get('/userresetcalories/:resetcalories/:userid', function(req, res) {
         resetcalories: req.params.resetcalories,
         userid: req.params.userid,
     };
-    db.updateidtypeexerciseuser(user).then((data) => {
+    db.updateresetcaloriesuser(user).then((data) => {
         res.json(data);
     })
 });
