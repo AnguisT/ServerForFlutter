@@ -109,7 +109,10 @@ function addTimeDay(timeday) {
 function updateIdTypeExerciseUser(user) {
     return db.any(`UPDATE public.user SET idtypeexercise=${user.idtypeexercise} WHERE userid=${user.userid};`)
     .then((val) => {
-        return val;
+        return db.any(`select idtypeexercise from public.user where userid=${user.userid}`)
+        .then((val) => {
+            return val;
+        });
     });
 }
 
