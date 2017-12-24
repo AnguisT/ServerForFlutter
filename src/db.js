@@ -116,6 +116,20 @@ function updateIdTypeExerciseUser(user) {
     });
 }
 
+function updateCaloriesNormUser(user) {
+    return db.any(`UPDATE public.user SET caloriesnorm=${user.caloriesnorm} WHERE userid=${user.userid};`)
+    .then((val) => {
+        return val;
+    });
+}
+
+function updateResetCaloriesUser(user) {
+    return db.any(`UPDATE public.user SET resetcalories=${user.resetcalories} WHERE userid=${user.userid};`)
+    .then((val) => {
+        return val;
+    });
+}
+
 module.exports = {
     getallusers: getAllUsers,
     getuserbylogin: getUserByLogin,
@@ -133,4 +147,6 @@ module.exports = {
     addcustomexercise: addCustomExercise,
     addtimeday: addTimeDay,
     updateidtypeexerciseuser: updateIdTypeExerciseUser,
+    updatecaloriesnormuser: updateCaloriesNormUser,
+    updateresetcaloriesuser: updateResetCaloriesUser,
 };

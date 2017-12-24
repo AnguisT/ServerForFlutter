@@ -133,6 +133,26 @@ app.get('/usertypeexercise/:idtypeexercise/:userid', function(req, res) {
     })
 });
 
+app.get('/usercaloriesnorm/:caloriesnorm/:userid', function(req, res) {
+    var user = {
+        caloriesnorm: req.params.caloriesnorm,
+        userid: req.params.userid,
+    };
+    db.updateidtypeexerciseuser(user).then((data) => {
+        res.json(data);
+    })
+});
+
+app.get('/userresetcalories/:resetcalories/:userid', function(req, res) {
+    var user = {
+        resetcalories: req.params.resetcalories,
+        userid: req.params.userid,
+    };
+    db.updateidtypeexerciseuser(user).then((data) => {
+        res.json(data);
+    })
+});
+
 module.exports = {
     app: app,
 };
