@@ -123,6 +123,16 @@ app.get('/timeday/:name', function(req, res) {
     })
 });
 
+app.get('/usertypeexercise/:idtypeexercise/:userid', function(req, res) {
+    var user = {
+        idtypeexercise = req.params.idtypeexercise,
+        userid = req.params.userid,
+    };
+    db.updateidtypeexerciseuser(user).then((data) => {
+        res.json(data);
+    })
+});
+
 module.exports = {
     app: app,
 };

@@ -106,6 +106,13 @@ function addTimeDay(timeday) {
     });
 }
 
+function updateIdTypeExerciseUser(user) {
+    return db.any(`UPDATE public.user SET idtypeexercise = ${user.idtypeexercise} WHERE userid = ${user.userid};`)
+    .then((val) => {
+        return val;
+    });
+}
+
 module.exports = {
     getallusers: getAllUsers,
     getuserbylogin: getUserByLogin,
@@ -122,4 +129,5 @@ module.exports = {
     addstatistics: addStatistics,
     addcustomexercise: addCustomExercise,
     addtimeday: addTimeDay,
+    updateidtypeexerciseuser: updateIdTypeExerciseUser,
 };
