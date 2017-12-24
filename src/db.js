@@ -69,7 +69,7 @@ function newUser(user) {
 function addStatistics(statistics) {
     return db.any(`INSERT INTO public.statistics(datetime, iduser) VALUES ('${statistics.datetime}', ${statistics.iduser})`)
     .then((val) => {
-        return val;
+        return getStatisticsByDate(statistics.datetime);
     });
 }
 
