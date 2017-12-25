@@ -159,6 +159,13 @@ app.get('/userresetcalories/:resetcalories/:userid', function(req, res) {
     })
 });
 
+app.get('/removecustomexercise/:customexerciseid', function(req, res) {
+    var customexerciseid = req.params.customexerciseid;
+    db.deletecustomexercise(customexerciseid).then((data) => {
+        res.json(data);
+    })
+});
+
 module.exports = {
     app: app,
 };

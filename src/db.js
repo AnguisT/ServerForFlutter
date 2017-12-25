@@ -130,6 +130,13 @@ function updateResetCaloriesUser(user) {
     });
 }
 
+function deleteCustomExercise(customexerciseid) {
+    return db.any(`delete from public.customexercise where customexerciseid=${customexerciseid};`)
+    .then((val) => {
+        return val;
+    });
+}
+
 module.exports = {
     getallusers: getAllUsers,
     getuserbylogin: getUserByLogin,
@@ -149,4 +156,5 @@ module.exports = {
     updateidtypeexerciseuser: updateIdTypeExerciseUser,
     updatecaloriesnormuser: updateCaloriesNormUser,
     updateresetcaloriesuser: updateResetCaloriesUser,
+    deletecustomexercise: deleteCustomExercise,
 };
